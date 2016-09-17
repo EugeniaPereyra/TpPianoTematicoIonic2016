@@ -1,28 +1,25 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('LoginCtrl', function($scope, $state) {
+	$scope.usuarioLog={};
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
-
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+	$scope.Guardar=function(){
+		var dato=JSON.stringify($scope.usuarioLog);
+		$state.go("tab.piano",{nombre:dato});
+	}
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('PianoCtrl', function($scope, $timeout, $stateParams) {
+	$scope.usuario={};
+	var nombre=JSON.parse($stateParams.nombre);
+  	$scope.usuario.puntaje=0;
+  	$scope.usuario.nombre=nombre.nombreLog;
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
+.controller('AutorCtrl', function($scope) {
+	$scope.autor={};
+	$scope.autor.nombre="Maria Eugenia Pereyra";
+	$scope.autor.foto="img/autor.jpg";
+	$scope.autor.email="meugeniape@gmail.com";
+	$scope.autor.github="https://github.com/EugeniaPereyra";
 });

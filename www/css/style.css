@@ -1,1 +1,32 @@
 /* Empty. Add your own CSS if you like */
+
+.signup-background {
+    background-color: #F4FA58;
+}
+
+.autor{
+	background-color: #58D3F7;
+}
+
+h2{
+	color:red;
+	text-align: center;
+}
+
+h3{
+	color:red;
+	text-align: center;
+}
+
+p{
+	color:red;
+	text-align: center;
+	font-size: 16px;
+}
+
+
+ion-icon{
+	color:yellow;
+	font-size: 20px;
+}
+
