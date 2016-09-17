@@ -1,7 +1,29 @@
-<ion-view view-title="Trivia" class="signup-background" >
-  <ion-content >
-      <br><br>
-  		<h2><strong>{{usuario.nombre}}</strong></h2><br>
-      
+
+<ion-view view-title="Piano" class="fondo-piano">
+  <ion-content scroll="false">
+  	<h4>Compositor: {{usuario.nombre}}</h4>
+    <div style="width:100%; margin: auto;" >
+      <div class="row" style="text-align: center;" ng-repeat="f in botones  | limitTo:filas" ng-init="f = $index">
+        <div class="col" ng-repeat="x in botones | limitTo:columnas" >
+          <button class="button piano btn_{{f}}_{{$index}}" id="btn_fila_{{ f }}_col_{{ $index }}" ng-click="Seleccionar($event)">
+          </button>
+        </div>
+      </div>
+
+      <div class="bar bar-footer bar-clear" style="height: auto;">
+        <div class="row" style="text-align: center;" >
+          <div class="col">
+            <button class="button ion-record btn-class-left"></button>
+          </div>
+          <div class="col">
+            <button class="button ion-stop btn-class-center"></button>
+          </div>
+          <div class="col">
+            <button class="button ion-play btn-class-right"></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </ion-content>
 </ion-view>

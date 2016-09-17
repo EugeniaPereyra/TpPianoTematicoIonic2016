@@ -14,6 +14,19 @@ angular.module('starter.controllers', [])
 	var nombre=JSON.parse($stateParams.nombre);
   	$scope.usuario.puntaje=0;
   	$scope.usuario.nombre=nombre.nombreLog;
+
+	$scope.botones = [1,2,3,4,5,6,7,8,9];
+	$scope.columnas = 3;
+	$scope.filas = $scope.botones.length / $scope.columnas; // agrupo los botones de a 3
+
+	$scope.getFilas = function(){
+	   return new Array($scope.filas);
+	};
+	  
+	$scope.sonar = function(eventoClick){
+	   console.log(eventoClick.target.id);
+	 
+	}
 })
 
 .controller('AutorCtrl', function($scope) {

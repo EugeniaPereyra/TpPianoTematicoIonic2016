@@ -1,6 +1,6 @@
-<ion-view view-title="Login" class="signup-background" >
-  <ion-content class="padding">
-  <br><br>
+<ion-view view-title="Login" class="login" >
+  <ion-content class="padding" scroll="false">
+  <div style="margin-top: 25%;">
     <h2>Ingresa tu nombre</h2>
 
     <form name="login" novalidate>
@@ -8,8 +8,9 @@
         <label class="item item-input">
           <input name="nombre" type="text" placeholder="Nombre" ng-model="usuarioLog.nombreLog">
         </label>
-        <button class="button button-block button-energized" ng-click="Guardar()" ng-show="usuarioLog.nombreLog"><p style="color:black"><strong>Jugar!</strong></p></button>
+        <button class="button button-block button-assertive" ng-click="Guardar()" ng-show="usuarioLog.nombreLog"><p style="color:black"><strong>Jugar!</strong></p></button>
       </div>
     </form>
+  </div>
   </ion-content>
 </ion-view>
