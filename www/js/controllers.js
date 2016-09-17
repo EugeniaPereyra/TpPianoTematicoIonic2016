@@ -9,7 +9,7 @@ angular.module('starter.controllers', [])
 	}
 })
 
-.controller('PianoCtrl', function($scope, $timeout, $stateParams) {
+.controller('PianoCtrl', function($scope, $timeout, $stateParams, $cordovaVibration, $cordovaNativeAudio, $timeout) {
 	$scope.usuario={};
 	var nombre=JSON.parse($stateParams.nombre);
   	$scope.usuario.puntaje=0;
@@ -23,8 +23,118 @@ angular.module('starter.controllers', [])
 	   return new Array($scope.filas);
 	};
 	  
-	$scope.sonar = function(eventoClick){
-	   console.log(eventoClick.target.id);
+	$scope.Seleccionar = function(eventoClick){
+	   	
+	   	switch(eventoClick.target.id)
+	   	{
+	   		case 'btn_fila_0_col_0':
+			   	try
+			  	{
+					$cordovaVibration.vibrate(300);
+		    		$cordovaNativeAudio.play('bulbasaur');
+		    	}
+		    	catch(e)
+		    	{
+		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
+		    	}
+		    	break;
+
+		    case 'btn_fila_0_col_1':
+			   	try
+			  	{
+					$cordovaVibration.vibrate(300);
+		    		$cordovaNativeAudio.play('charmander');
+		    	}
+		    	catch(e)
+		    	{
+		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
+		    	}
+		    	break;
+
+	   		case 'btn_fila_0_col_2':
+			   	try
+			  	{
+					$cordovaVibration.vibrate(300);
+		    		$cordovaNativeAudio.play('clefairy');
+		    	}
+		    	catch(e)
+		    	{
+		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
+		    	}
+		    	break;
+
+	   		case 'btn_fila_1_col_0':
+			   	try
+			  	{
+					$cordovaVibration.vibrate(300);
+		    		$cordovaNativeAudio.play('eevee');
+		    	}
+		    	catch(e)
+		    	{
+		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
+		    	}
+		    	break;
+
+	   		case 'btn_fila_1_col_1':
+			   	try
+			  	{
+					$cordovaVibration.vibrate(300);
+		    		$cordovaNativeAudio.play('meowth');
+		    	}
+		    	catch(e)
+		    	{
+		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
+		    	}
+		    	break;
+
+	   		case 'btn_fila_1_col_2':
+			   	try
+			  	{
+					$cordovaVibration.vibrate(300);
+		    		$cordovaNativeAudio.play('pikachu');
+		    	}
+		    	catch(e)
+		    	{
+		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
+		    	}
+		    	break;
+
+	   		case 'btn_fila_2_col_0':
+			   	try
+			  	{
+					$cordovaVibration.vibrate(300);
+		    		$cordovaNativeAudio.play('psyduck');
+		    	}
+		    	catch(e)
+		    	{
+		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
+		    	}
+		    	break;
+
+	   		case 'btn_fila_2_col_1':
+			   	try
+			  	{
+					$cordovaVibration.vibrate(300);
+		    		$cordovaNativeAudio.play('snorlax');
+		    	}
+		    	catch(e)
+		    	{
+		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
+		    	}
+		    	break;
+
+	   		case 'btn_fila_2_col_2':
+			   	try
+			  	{
+					$cordovaVibration.vibrate(300);
+		    		$cordovaNativeAudio.play('squirtle');
+		    	}
+		    	catch(e)
+		    	{
+		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
+		    	}
+		    	break;
+    	}
 	 
 	}
 })

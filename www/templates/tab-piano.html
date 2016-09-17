@@ -5,7 +5,7 @@
     <div style="width:100%; margin: auto;" >
       <div class="row" style="text-align: center;" ng-repeat="f in botones  | limitTo:filas" ng-init="f = $index">
         <div class="col" ng-repeat="x in botones | limitTo:columnas" >
-          <button class="button piano btn_{{f}}_{{$index}}" id="btn_fila_{{ f }}_col_{{ $index }}" ng-click="Seleccionar($event)">
+          <button class="button piano btn_{{f}}_{{$index}}" id="btn_fila_{{f}}_col_{{$index}}" ng-click="Seleccionar($event)">
           </button>
         </div>
       </div>
