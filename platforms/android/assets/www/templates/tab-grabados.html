@@ -1,0 +1,13 @@
+<ion-view view-title="Grabados" class="autor">
+  <ion-content>
+  <br><br>
+  	<center><div>
+  		<p><strong>Usuario:</strong> {{archivo.usuario}}</p>
+  		<p><strong>Sonidos:</strong></p>
+  		<div ng-repeat="sonido in archivo.sonidos">
+  				<p>{{sonido}}</p>
+  		</div>
+  	</div></center>
+
+  </ion-content>
+</ion-view>

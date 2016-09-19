@@ -22,49 +22,49 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
 
     if( window.plugins && window.plugins.NativeAudio ) {
-      window.plugins.NativeAudio.preloadSimple('bulbasaur', 'audio/bulbasaur.wav', function(msg){
-        }, function(msg){
-            console.log( 'Error: ' + msg );
+      window.plugins.NativeAudio.preloadSimple('bulbasaur', 'audio/bulbasaur.wav', function(mensaje){
+        }, function(mensaje){
+            console.log( 'Error: ' + mensaje );
         });
 
-      window.plugins.NativeAudio.preloadSimple('charmander', 'audio/charmander.wav', function(msg){
-        }, function(msg){
-            console.log( 'Error: ' + msg );
+      window.plugins.NativeAudio.preloadSimple('charmander', 'audio/charmander.wav', function(mensaje){
+        }, function(mensaje){
+            console.log( 'Error: ' + mensaje );
         });
 
-      window.plugins.NativeAudio.preloadSimple('clefairy', 'audio/clefairy.wav', function(msg){
-        }, function(msg){
-            console.log( 'Error: ' + msg );
+      window.plugins.NativeAudio.preloadSimple('clefairy', 'audio/clefairy.wav', function(mensaje){
+        }, function(mensaje){
+            console.log( 'Error: ' + mensaje );
         });
 
-      window.plugins.NativeAudio.preloadSimple('eevee', 'audio/eevee.wav', function(msg){
-        }, function(msg){
-            console.log( 'Error: ' + msg );
+      window.plugins.NativeAudio.preloadSimple('eevee', 'audio/eevee.wav', function(mensaje){
+        }, function(mensaje){
+            console.log( 'Error: ' + mensaje );
         });
 
-      window.plugins.NativeAudio.preloadSimple('meowth', 'audio/meowth.wav', function(msg){
-        }, function(msg){
-            console.log( 'Error: ' + msg );
+      window.plugins.NativeAudio.preloadSimple('meowth', 'audio/meowth.wav', function(mensaje){
+        }, function(mensaje){
+            console.log( 'Error: ' + mensaje );
         });
 
-      window.plugins.NativeAudio.preloadSimple('pikachu', 'audio/pikachu.wav', function(msg){
-        }, function(msg){
-            console.log( 'Error: ' + msg );
+      window.plugins.NativeAudio.preloadSimple('pikachu', 'audio/pikachu.wav', function(mensaje){
+        }, function(mensaje){
+            console.log( 'Error: ' + mensaje );
         });
 
-      window.plugins.NativeAudio.preloadSimple('psyduck', 'audio/psyduck.wav', function(msg){
-        }, function(msg){
-            console.log( 'Error: ' + msg );
+      window.plugins.NativeAudio.preloadSimple('psyduck', 'audio/psyduck.wav', function(mensaje){
+        }, function(mensaje){
+            console.log( 'Error: ' + mensaje );
         });
 
-      window.plugins.NativeAudio.preloadSimple('snorlax', 'audio/snorlax.wav', function(msg){
-        }, function(msg){
-            console.log( 'Error: ' + msg );
+      window.plugins.NativeAudio.preloadSimple('butterfree', 'audio/butterfree.wav', function(mensaje){
+        }, function(mensaje){
+            console.log( 'Error: ' + mensaje );
         });
 
-      window.plugins.NativeAudio.preloadSimple('squirtle', 'audio/squirtle.wav', function(msg){
-        }, function(msg){
-            console.log( 'Error: ' + msg );
+      window.plugins.NativeAudio.preloadSimple('squirtle', 'audio/squirtle.wav', function(mensaje){
+        }, function(mensaje){
+            console.log( 'Error: ' + mensaje );
         });
     }
   });
@@ -103,6 +103,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         'tab-piano': {
           templateUrl: 'templates/tab-piano.html',
           controller: 'PianoCtrl'
+        }
+      }
+    })
+
+    .state('tab.grabados', {
+      cache: false,
+      url: '/grabados',
+      views: {
+        'tab-grabados': {
+          templateUrl: 'templates/tab-grabados.html',
+          controller: 'GrabadosCtrl'
         }
       }
     })

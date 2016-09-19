@@ -4,8 +4,9 @@
     background-color: #F4FA58;
    	background-image:url('../img/logo.png');
 	background-repeat:no-repeat;
-	background-position: top;
+	background-position: bottom;
 	background-size: auto;
+
 }
 
 .autor{
@@ -194,7 +195,7 @@ ion-icon{
 
 .btn_2_1{
 	background: orange;
-	background-image:url('../img/snorlax.png');
+	background-image:url('../img/butterfree.png');
 	background-repeat:no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -207,4 +208,6 @@ ion-icon{
 	background-position: center;
 	background-size: cover;
 }
+
+
 
