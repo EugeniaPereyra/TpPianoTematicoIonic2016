@@ -1,0 +1,13 @@
+<ion-view view-title="Grabado" class="fondo-grabado">
+  <ion-content>
+  <br><br>
+  	<center><div>
+  		<p style="color:black"><strong>Usuario:</strong> {{archivo.usuario}}</p>
+  		<p style="color:black"><strong>Sonidos:</strong></p>
+  		<div ng-repeat="sonido in archivo.sonidos">
+  				<p style="color:black">{{sonido}}</p>
+  		</div>
+  	</div></center>
+
+  </ion-content>
+</ion-view>

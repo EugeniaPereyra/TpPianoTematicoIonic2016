@@ -9,10 +9,10 @@ angular.module('starter.controllers', [])
 	}
 })
 
-.controller('PianoCtrl', function($scope, $timeout, $stateParams, $cordovaVibration, $cordovaNativeAudio, $cordovaFile) {
+.controller('PianoCtrl', function($scope, $timeout, $stateParams, $cordovaVibration, $cordovaNativeAudio, $cordovaFile, $ionicPopup) {
 	document.addEventListener("deviceready", 
 		function onDeviceReady() {
-		  $cordovaFile.createFile(cordova.file.dataDirectory, "archivo.txt",true)
+		  $cordovaFile.createFile(cordova.file.externalRootDirectory, "archivo.txt",true) // cordova.file.dataDirectory
 	      .then(function (success) {
 	        // success
 	      }, function (error) {
@@ -193,14 +193,26 @@ angular.module('starter.controllers', [])
 		archivo.usuario=$scope.usuario.nombre;
 		archivo.sonidos=$scope.apretado;
 
-		$cordovaFile.writeFile(cordova.file.dataDirectory, "archivo.txt", archivo, true)
-	      .then(function (success) {
-	        // success
-	      }, function (error) {
-	        // error
-	      });
-	      $scope.copia=$scope.apretado;
-	      $scope.apretado=null;
+		var confirmPopup = $ionicPopup.confirm({
+     		title: 'Guardar',
+     		template: '¿Desea guardar en archivo?',
+     		cssClass:'salida',
+     		okType: 'button-energized',
+   		});
+
+   		confirmPopup.then(function(res) {
+     		if(res) {
+       			$cordovaFile.writeFile(cordova.file.externalRootDirectory, "archivo.txt", archivo, true)
+				      .then(function (success) {
+				        // success
+				      }, function (error) {
+				        // error
+				      });
+     		}
+   		});
+
+	    $scope.copia=$scope.apretado;
+	    $scope.apretado=null;
 	}
 
 	$scope.Escuchar=function(){
@@ -222,17 +234,19 @@ angular.module('starter.controllers', [])
 	}
 })
 
-.controller('GrabadosCtrl', function($scope, $cordovaFile) {
-	$scope.archivo;
-
-	$cordovaFile.readAsText(cordova.file.dataDirectory, "archivo.txt")
-		      .then(function (success) {
-		        // success
-		        var dato=JSON.parse(success);
-		        $scope.archivo=dato;
-		      }, function (error) {
-		        // error
-		      });
+.controller('GrabadoCtrl', function($scope, $cordovaFile) {
+	$scope.archivo={};
+	document.addEventListener("deviceready", 
+		function onDeviceReady() {
+			$cordovaFile.readAsText(cordova.file.externalRootDirectory, "archivo.txt")
+				      .then(function (success) {
+				        // success
+				        var dato=JSON.parse(success);
+				        $scope.archivo=dato;
+				      }, function (error) {
+				        // error
+				      });
+		}, false);
 })
 
 .controller('AutorCtrl', function($scope) {

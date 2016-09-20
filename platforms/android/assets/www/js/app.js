@@ -107,13 +107,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
       }
     })
 
-    .state('tab.grabados', {
+    .state('tab.grabado', {
+      url: '/grabado',
       cache: false,
-      url: '/grabados',
       views: {
-        'tab-grabados': {
-          templateUrl: 'templates/tab-grabados.html',
-          controller: 'GrabadosCtrl'
+        'tab-grabado': {
+          templateUrl: 'templates/tab-grabado.html',
+          controller: 'GrabadoCtrl'
         }
       }
     })
