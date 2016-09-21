@@ -12,7 +12,7 @@ angular.module('starter.controllers', [])
 .controller('PianoCtrl', function($scope, $timeout, $stateParams, $cordovaVibration, $cordovaNativeAudio, $cordovaFile, $ionicPopup) {
 	document.addEventListener("deviceready", 
 		function onDeviceReady() {
-		  $cordovaFile.createFile(cordova.file.externalRootDirectory, "archivo.txt",true) // cordova.file.dataDirectory
+		  $cordovaFile.createFile(cordova.file.externalRootDirectory, "piano.txt",true) // cordova.file.dataDirectory //cordova.file.externalRootDirectory
 	      .then(function (success) {
 	        // success
 	      }, function (error) {
@@ -28,7 +28,21 @@ angular.module('starter.controllers', [])
 	$scope.botones = [1,2,3,4,5,6,7,8,9];
 	$scope.columnas = 3;
 	$scope.filas = $scope.botones.length / $scope.columnas; // agrupo los botones de a 3
+	$scope.grabados=[];
 
+	$cordovaFile.checkFile(cordova.file.externalRootDirectory, "piano.txt") // cordova.file.dataDirectory //cordova.file.externalRootDirectory
+        .then(function (success) {
+          // succes
+          $cordovaFile.readAsText(cordova.file.externalRootDirectory, "piano.txt")
+                  .then(function (success) {
+                    var dato=JSON.parse(success);
+                    $scope.grabados=dato;
+                  }, function (error) {
+                    // error
+                  });
+        }, function (error) {
+          // error
+        });
 
 	$scope.getFilas = function(){
 	   return new Array($scope.filas);
@@ -190,7 +204,7 @@ angular.module('starter.controllers', [])
 
 	$scope.Parar=function(){
 		var archivo={};
-		archivo.usuario=$scope.usuario.nombre;
+		archivo.nombre=$scope.usuario.nombre;
 		archivo.sonidos=$scope.apretado;
 
 		var confirmPopup = $ionicPopup.confirm({
@@ -200,11 +214,15 @@ angular.module('starter.controllers', [])
      		okType: 'button-energized',
    		});
 
+      $scope.grabados.push(archivo);
+      var dato=JSON.stringify($scope.grabados);
+
    		confirmPopup.then(function(res) {
      		if(res) {
-       			$cordovaFile.writeFile(cordova.file.externalRootDirectory, "archivo.txt", archivo, true)
+       			$cordovaFile.writeFile(cordova.file.externalRootDirectory, "piano.txt", dato, true)
 				      .then(function (success) {
 				        // success
+				        console.log("archivo guardado");
 				      }, function (error) {
 				        // error
 				      });
@@ -238,7 +256,7 @@ angular.module('starter.controllers', [])
 	$scope.archivo={};
 	document.addEventListener("deviceready", 
 		function onDeviceReady() {
-			$cordovaFile.readAsText(cordova.file.externalRootDirectory, "archivo.txt")
+			$cordovaFile.readAsText(cordova.file.externalRootDirectory, "piano.txt")
 				      .then(function (success) {
 				        // success
 				        var dato=JSON.parse(success);
