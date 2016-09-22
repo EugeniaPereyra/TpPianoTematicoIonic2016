@@ -30,19 +30,25 @@ angular.module('starter.controllers', [])
 	$scope.filas = $scope.botones.length / $scope.columnas; // agrupo los botones de a 3
 	$scope.grabados=[];
 
-	$cordovaFile.checkFile(cordova.file.externalRootDirectory, "piano.txt") // cordova.file.dataDirectory //cordova.file.externalRootDirectory
-        .then(function (success) {
-          // succes
-          $cordovaFile.readAsText(cordova.file.externalRootDirectory, "piano.txt")
-                  .then(function (success) {
-                    var dato=JSON.parse(success);
-                    $scope.grabados=dato;
-                  }, function (error) {
-                    // error
-                  });
-        }, function (error) {
-          // error
-        });
+	try{
+		$cordovaFile.checkFile(cordova.file.externalRootDirectory, "piano.txt") // cordova.file.dataDirectory //cordova.file.externalRootDirectory
+	        .then(function (success) {
+	          // succes
+	          $cordovaFile.readAsText(cordova.file.externalRootDirectory, "piano.txt")
+	                  .then(function (success) {
+	                    var dato=JSON.parse(success);
+	                    $scope.grabados=dato;
+	                  }, function (error) {
+	                    // error
+	                  });
+	        }, function (error) {
+	          // error
+	        });
+	}
+	catch(e)
+	{
+		console.log("El plugin File funciona en dispositivos unicamente");
+	}
 
 	$scope.getFilas = function(){
 	   return new Array($scope.filas);
@@ -219,13 +225,19 @@ angular.module('starter.controllers', [])
 
    		confirmPopup.then(function(res) {
      		if(res) {
-       			$cordovaFile.writeFile(cordova.file.externalRootDirectory, "piano.txt", dato, true)
-				      .then(function (success) {
-				        // success
-				        console.log("archivo guardado");
-				      }, function (error) {
-				        // error
-				      });
+     			try{     				
+	       			$cordovaFile.writeFile(cordova.file.externalRootDirectory, "piano.txt", dato, true)
+					      .then(function (success) {
+					        // success
+					        console.log("archivo guardado");
+					      }, function (error) {
+					        // error
+					      });
+				}
+				catch(e)
+				{
+					console.log("El plugin File funciona en dispositivos unicamente");
+				}
      		}
    		});
 
