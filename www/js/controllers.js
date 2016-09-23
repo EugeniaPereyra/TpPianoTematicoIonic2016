@@ -6,6 +6,7 @@ angular.module('starter.controllers', [])
 	$scope.Guardar=function(){
 		var dato=JSON.stringify($scope.usuarioLog);
 		$state.go("tab.piano",{nombre:dato});
+		$scope.usuarioLog.nombreLog="";
 	}
 })
 
@@ -15,8 +16,10 @@ angular.module('starter.controllers', [])
 		  $cordovaFile.createFile(cordova.file.externalRootDirectory, "piano.txt",true) // cordova.file.dataDirectory //cordova.file.externalRootDirectory
 	      .then(function (success) {
 	        // success
+	        console.log("archivo creado");
 	      }, function (error) {
 	        // error
+	        console.log(error);
 	      });
 		}, false);
 
@@ -40,9 +43,11 @@ angular.module('starter.controllers', [])
 	                    $scope.grabados=dato;
 	                  }, function (error) {
 	                    // error
+	                    console.log(error);
 	                  });
 	        }, function (error) {
 	          // error
+	          console.log(error);
 	        });
 	}
 	catch(e)
@@ -63,15 +68,7 @@ angular.module('starter.controllers', [])
 		    	{
 		    		$scope.apretado.push('bulbasaur');
 		    	}
-			   	try
-			  	{
-					$cordovaVibration.vibrate(300);
-		    		$cordovaNativeAudio.play('bulbasaur');
-		    	}
-		    	catch(e)
-		    	{
-		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
-		    	}
+		    	Reproducir('bulbasaur',300);
 		    	break;
 
 		    case 'btn_fila_0_col_1':
@@ -79,15 +76,7 @@ angular.module('starter.controllers', [])
 		    	{
 		    		$scope.apretado.push('charmander');
 		    	}
-			   	try
-			  	{
-					$cordovaVibration.vibrate(300);
-		    		$cordovaNativeAudio.play('charmander');
-		    	}
-		    	catch(e)
-		    	{
-		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
-		    	}
+		    	Reproducir('charmander',300);
 		    	break;
 
 	   		case 'btn_fila_0_col_2':
@@ -95,15 +84,7 @@ angular.module('starter.controllers', [])
 		    	{
 		   			$scope.apretado.push('clefairy');
 		   		}
-			   	try
-			  	{
-					$cordovaVibration.vibrate(300);
-		    		$cordovaNativeAudio.play('clefairy');
-		    	}
-		    	catch(e)
-		    	{
-		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
-		    	}
+		   		Reproducir('clefairy',300);
 		    	break;
 
 	   		case 'btn_fila_1_col_0':
@@ -111,15 +92,7 @@ angular.module('starter.controllers', [])
 		    	{
 		   			$scope.apretado.push('eevee');
 		   		}
-			   	try
-			  	{
-					$cordovaVibration.vibrate(300);
-		    		$cordovaNativeAudio.play('eevee');
-		    	}
-		    	catch(e)
-		    	{
-		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
-		    	}
+		   		Reproducir('eevee',300);
 		    	break;
 
 	   		case 'btn_fila_1_col_1':
@@ -127,15 +100,7 @@ angular.module('starter.controllers', [])
 		    	{
 		   			$scope.apretado.push('meowth');
 		   		}
-			   	try
-			  	{
-					$cordovaVibration.vibrate(300);
-		    		$cordovaNativeAudio.play('meowth');
-		    	}
-		    	catch(e)
-		    	{
-		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
-		    	}
+		   		Reproducir('meowth',300);
 		    	break;
 
 	   		case 'btn_fila_1_col_2':
@@ -143,15 +108,7 @@ angular.module('starter.controllers', [])
 		    	{
 		   			$scope.apretado.push('pikachu');
 		   		}
-			   	try
-			  	{
-					$cordovaVibration.vibrate(300);
-		    		$cordovaNativeAudio.play('pikachu');
-		    	}
-		    	catch(e)
-		    	{
-		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
-		    	}
+		   		Reproducir('pikachu',300);
 		    	break;
 
 	   		case 'btn_fila_2_col_0':
@@ -159,15 +116,7 @@ angular.module('starter.controllers', [])
 		    	{
 		   			$scope.apretado.push('psyduck');
 		   		}
-			   	try
-			  	{
-					$cordovaVibration.vibrate(300);
-		    		$cordovaNativeAudio.play('psyduck');
-		    	}
-		    	catch(e)
-		    	{
-		    		console.log("La vibracion y el sonido, solo funcionan en celulares");	    	
-		    	}
+		   		Reproducir('psyduck',300);
 		    	break;
 
 	   		case 'btn_fila_2_col_1':
@@ -175,15 +124,7 @@ angular.module('starter.controllers', [])
 		    	{
 		   			$scope.apretado.push('butterfree');
 		   		}
-			   	try
-			  	{
-					$cordovaVibration.vibrate(300);
-		    		$cordovaNativeAudio.play('butterfree');
-		    	}
-		    	catch(e)
-		    	{
-		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
-		    	}
+				Reproducir('butterfree',300);
 		    	break;
 
 	   		case 'btn_fila_2_col_2':
@@ -191,17 +132,21 @@ angular.module('starter.controllers', [])
 		    	{
 		   			$scope.apretado.push('squirtle');
 		   		}
-			   	try
-			  	{
-					$cordovaVibration.vibrate(300);
-		    		$cordovaNativeAudio.play('squirtle');
-		    	}
-		    	catch(e)
-		    	{
-		    		console.log("La vibracion y el sonido, solo funcionan en celulares");
-		    	}
+		   		Reproducir('squirtle',300);
 		    	break;
     	} 
+	}
+
+	function Reproducir(sonido,tiempo){
+		try
+		{
+			$cordovaVibration.vibrate(tiempo);
+			$cordovaNativeAudio.play(sonido);
+		}
+		catch(e)
+		{
+			console.log("La vibracion y el sonido, solo funcionan en celulares");
+		}
 	}
 
 	$scope.Grabar=function(){
@@ -232,6 +177,7 @@ angular.module('starter.controllers', [])
 					        console.log("archivo guardado");
 					      }, function (error) {
 					        // error
+					        console.log(error);
 					      });
 				}
 				catch(e)
@@ -275,6 +221,7 @@ angular.module('starter.controllers', [])
 				        $scope.archivo=dato;
 				      }, function (error) {
 				        // error
+				        console.log(error);
 				      });
 		}, false);
 })
