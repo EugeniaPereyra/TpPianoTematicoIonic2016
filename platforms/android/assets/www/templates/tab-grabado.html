@@ -1,14 +1,16 @@
 <ion-view view-title="Grabado" class="fondo-grabado">
   <ion-content>
+  <center>
     <br>
+    <h4 style="color:black; text-align:center">Historial de grabaciones</h4>
+    <h4 style="color:black; text-align:center">-------------------------------</h4>
     <div ng-repeat="usuario in archivo">
-    	<center>
     		<p style="color:black"><strong>Usuario:</strong> {{usuario.nombre}}</p>
     		<p style="color:black"><strong>Sonidos:</strong></p>
     		<div ng-repeat="sonido in usuario.sonidos track by $index">
     				<label style="color:black">{{sonido}}</label>
     		</div>
-        <br>-------------------------------<br>
+        <strong>-------------------------------</strong>
     	</div>
       </center>
 

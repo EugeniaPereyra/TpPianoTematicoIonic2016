@@ -25,7 +25,6 @@ angular.module('starter.controllers', [])
 
 	$scope.usuario={};
 	var nombre=JSON.parse($stateParams.nombre);
-  	$scope.usuario.puntaje=0;
   	$scope.usuario.nombre=nombre.nombreLog;
 
 	$scope.botones = [1,2,3,4,5,6,7,8,9];
@@ -158,34 +157,37 @@ angular.module('starter.controllers', [])
 		archivo.nombre=$scope.usuario.nombre;
 		archivo.sonidos=$scope.apretado;
 
-		var confirmPopup = $ionicPopup.confirm({
-     		title: 'Guardar',
-     		template: '¿Desea guardar en archivo?',
-     		cssClass:'salida',
-     		okType: 'button-energized',
-   		});
+		if($scope.apretado!=null && $scope.apretado.length!=0)
+		{
+			var confirmPopup = $ionicPopup.confirm({
+	     		title: 'Guardar',
+	     		template: '¿Desea guardar en archivo?',
+	     		cssClass:'salida',
+	     		okType: 'button-energized',
+	   		});
+	   		
+	      $scope.grabados.push(archivo);
+	      var dato=JSON.stringify($scope.grabados);
 
-      $scope.grabados.push(archivo);
-      var dato=JSON.stringify($scope.grabados);
-
-   		confirmPopup.then(function(res) {
-     		if(res) {
-     			try{     				
-	       			$cordovaFile.writeFile(cordova.file.externalRootDirectory, "piano.txt", dato, true)
-					      .then(function (success) {
-					        // success
-					        console.log("archivo guardado");
-					      }, function (error) {
-					        // error
-					        console.log(error);
-					      });
-				}
-				catch(e)
-				{
-					console.log("El plugin File funciona en dispositivos unicamente");
-				}
-     		}
-   		});
+	   		confirmPopup.then(function(res) {
+	     		if(res) {
+	     			try{     				
+		       			$cordovaFile.writeFile(cordova.file.externalRootDirectory, "piano.txt", dato, true)
+						      .then(function (success) {
+						        // success
+						        console.log("archivo guardado");
+						      }, function (error) {
+						        // error
+						        console.log(error);
+						      });
+					}
+					catch(e)
+					{
+						console.log("El plugin File funciona en dispositivos unicamente");
+					}
+	     		}
+	   		});
+	   	}
 
 	    $scope.copia=$scope.apretado;
 	    $scope.apretado=null;
@@ -218,7 +220,7 @@ angular.module('starter.controllers', [])
 				      .then(function (success) {
 				        // success
 				        var dato=JSON.parse(success);
-				        $scope.archivo=dato;
+				        $scope.archivo=dato;		                
 				      }, function (error) {
 				        // error
 				        console.log(error);
